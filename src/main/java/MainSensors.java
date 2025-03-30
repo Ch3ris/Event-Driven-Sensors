@@ -6,11 +6,11 @@ public class MainSensors {
 
         EventBus eventBus = EventBus.getDefault();
 
-        NumericDisplay n1=new NumericDisplay(eventBus,"NumericDisplay1");
-        NumericDisplay n2=new NumericDisplay(eventBus,"NumericDisplay2");
+//        NumericDisplay n1=new NumericDisplay(eventBus,"NumericDisplay1");
+        MaxValueDisplay m1=new MaxValueDisplay(eventBus,"MaxValueDisplay1");
 
-        eventBus.register(n1);
-        eventBus.register(n2);
+//        eventBus.register(n1);
+        eventBus.register(m1);
 
 
         TemperatureSensor TimisoaraSensor1=new TemperatureSensor(eventBus,"TimisoaraSensor1","Timisoara",35.0f);
