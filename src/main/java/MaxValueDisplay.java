@@ -4,28 +4,31 @@ import org.greenrobot.eventbus.Subscribe;
 public class MaxValueDisplay implements Display {
 
     String name;
-    EventBus e;
     String explanation;
     float maxTemp=Float.MIN_VALUE;
     float maxWater=Float.MIN_VALUE;
     float maxHumid=Float.MIN_VALUE;
 
 
-    public MaxValueDisplay(EventBus e,String name)
+    public MaxValueDisplay(String name)
     {
-        this.e=e;
         this.name=name;
+    }
+
+    public void registerBus(EventBus e)
+    {
+        e.register(this);
     }
 
     @Subscribe
     public void display() {
         String s="Name for this display:"+name;
         if(maxTemp!=Float.MIN_VALUE)
-            s+="\nMax value for this event:"+maxTemp;
+            s+="\nMax value for this event: temperature:"+maxTemp;
         if(maxWater!=Float.MIN_VALUE)
-            s+="\nMax value for this event:"+maxWater;
+            s+="\nMax value for this event: water:"+maxWater;
         if(maxHumid!=Float.MIN_VALUE)
-            s+="\nMax value for this event:"+maxHumid;
+            s+="\nMax value for this event: humid:"+maxHumid;
         s+="\nLatest sensor compared for max value:\n"+explanation;
         System.out.println(s);
         System.out.println();
